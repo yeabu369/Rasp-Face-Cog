@@ -3,10 +3,13 @@ import {
   Button,
   Typography,
   Container,
+  Box
 } from "@material-ui/core";
+import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import { Link } from "react-router-dom";
 
-import coins from '../../assets/USDC-USD.png'
+import Display from '../Display/Display';
+import UserData from '../UserData/UserData';
 import useStyles from "./styles";
 
 const Home = () => {
@@ -15,21 +18,17 @@ const Home = () => {
     <>
       <div className={classes.toolbar} />
       <Container className={classes.root}>
-        <div className={classes.mainContainer}>
-          <div className={classes.sideShowCase}>
-            <Typography variant="h1" className={classes.title} align="left" gutterBottom gutterTop>
-                Get access to U.S. Banking
-            </Typography>
-            <Typography variant="h6" align="left" color="textSecondary">
-                Send and Receive USD ACH, Wire, and Crypto Payments from Africa.
-            </Typography>
-            <Button component={Link} to="/auth/signup" variant="contained" align="left" color="primary" disableElevation>
-              Create Account
-            </Button>
-          </div>
-          <div className={classes.createAccount}>
-          <img src={coins} alt="USDCoins" height="612px" className={classes.image}/>
-          </div>
+        <div className={classes.cameraDisplay}>
+          <Display />
+          <Button variant="contained" align="left" color="primary" disableElevation className={classes.button}>
+            Turn On Camera
+          </Button>
+        </div>
+        <div className={classes.report}>
+          <Typography variant='h4' className={classes.visitorInfoText}>
+            Visitor Information {<VerifiedUserIcon large color='primary'/>}
+          </Typography>
+          <UserData />
         </div>
       </Container>
     </>

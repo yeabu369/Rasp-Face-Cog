@@ -2,23 +2,21 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles((theme) => ({
   root: {
-    paddingTop: theme.spacing(6)
-  },
-  mainContainer: {
+    paddingTop: theme.spacing(6),
     display: "flex",
-    justifyContent: "space-between",
-    marginTop: theme.spacing(2)
   },
-  title: {
-    fontWeight: "bold"
+  report: {
+    marginLeft: theme.spacing(6)
+  },
+  visitorInfoText: {
+    display: 'flex',
+    alignItems: 'center'
   },
   toolbar: theme.mixins.toolbar,
   primaryText: {
     color: theme.palette.primary.main
   },
-  createAccount: {
+  button: {
     marginTop: theme.spacing(4),
-    display: "flex",
-    justifyContent: "flex-start"
   }
 }));
