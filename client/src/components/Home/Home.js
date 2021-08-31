@@ -1,16 +1,42 @@
 import React from "react";
-import {
-  Button,
-  Typography,
-  Container,
-  Box
-} from "@material-ui/core";
-import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
-import { Link } from "react-router-dom";
+import { Typography, Container, TextField, Grid } from "@material-ui/core";
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
-import Display from '../Display/Display';
-import UserData from '../UserData/UserData';
 import useStyles from "./styles";
+
+const GenderCombo = () => (
+  <Autocomplete
+    id="gender-combo"
+    options={genders}
+    getOptionLabel={(option) => option.type}
+    renderInput={(params) => (
+      <TextField {...params} label="Gender" variant="outlined" />
+    )}
+  />
+);
+
+const RoleCombo = () => (
+  <Autocomplete
+    id="role-combo"
+    options={roles}
+    getOptionLabel={(option) => option.type}
+    style={{ width: 300 }}
+    renderInput={(params) => (
+      <TextField {...params} label="Role" variant="outlined" />
+    )}
+  />
+);
+
+const genders = [
+  { type: 'Male', symbol: 'M'},
+  { type: 'Female', symbol: 'F'},
+];
+
+const roles = [
+  { type: 'Student'},
+  { type: 'Staff' },
+  { type: 'Adminstration' },
+];
 
 const Home = () => {
   const classes = useStyles();
@@ -18,18 +44,23 @@ const Home = () => {
     <>
       <div className={classes.toolbar} />
       <Container className={classes.root}>
-        <div className={classes.cameraDisplay}>
-          <Display />
-          <Button variant="contained" align="left" color="primary" disableElevation className={classes.button}>
-            Turn On Camera
-          </Button>
-        </div>
-        <div className={classes.report}>
-          <Typography variant='h4' className={classes.visitorInfoText}>
-            Visitor Information {<VerifiedUserIcon large color='primary'/>}
-          </Typography>
-          <UserData />
-        </div>
+        <Typography variant="h3">User Profile</Typography>
+        <form className={classes.form} noValidate autoComplete="off">
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6} lg={4}>
+              <TextField id="name" label="Name" variant="outlined" />
+            </Grid>
+            <Grid item>
+              <TextField id="id" label="Id" variant="outlined" />
+            </Grid>
+            <Grid item>
+              <GenderCombo />
+            </Grid>
+            <Grid item>
+              <RoleCombo />
+            </Grid>
+          </Grid>
+        </form>
       </Container>
     </>
   );

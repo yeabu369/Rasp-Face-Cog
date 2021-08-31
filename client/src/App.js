@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Navbar, Auth, Home } from "./components";
+import { Navbar, Home } from "./components";
 import "./App.css";
+import SecurityPage from "./components/SecurityPage/SecurityPage";
 
 const App = () => (
     <Router>
@@ -10,7 +11,7 @@ const App = () => (
             <Navbar />
             <Switch>
                 <Route path="/" exact component={Home} />
-                <Route path="/auth/:type" exact component={Auth} />
+                <Route path="/Security" exact component={SecurityPage} />
             </Switch>
         </div>
     </Router>
