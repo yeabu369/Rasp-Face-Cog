@@ -1,8 +1,9 @@
 import React from "react";
-import { Typography, Container, TextField, Grid } from "@material-ui/core";
+import { Button, Typography, Container, TextField, Grid } from "@material-ui/core";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import useStyles from "./styles";
+import gadgetsHero from "../../assets/Gadgets.svg"
 
 const GenderCombo = () => (
   <Autocomplete
@@ -27,6 +28,18 @@ const RoleCombo = () => (
   />
 );
 
+const DeviceCombo = () => (
+  <Autocomplete
+    id="device-combo"
+    options={devices}
+    getOptionLabel={(option) => option.type}
+    style={{ width: 300 }}
+    renderInput={(params) => (
+      <TextField {...params} label="Device Type" variant="outlined" />
+    )}
+  />
+);
+
 const genders = [
   { type: 'Male', symbol: 'M'},
   { type: 'Female', symbol: 'F'},
@@ -38,6 +51,11 @@ const roles = [
   { type: 'Adminstration' },
 ];
 
+const devices = [
+  { type: 'Laptop', symbol: 'L'},
+  { type: 'Tablet', symbol: 'T'},
+];
+
 const Home = () => {
   const classes = useStyles();
   return (
@@ -47,17 +65,28 @@ const Home = () => {
         <Typography variant="h3">User Profile</Typography>
         <form className={classes.form} noValidate autoComplete="off">
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={6} lg={4}>
-              <TextField id="name" label="Name" variant="outlined" />
+            <Grid item container spacing={2}>
+              <Grid item>
+                <Typography variant="h6" gutterTop>Basic Information</Typography>
+                <TextField id="fullname" label="Fullname" variant="outlined" />
+                <TextField id="id" label="Id" variant="outlined" />
+                <GenderCombo />
+                <RoleCombo />
+              </Grid>
             </Grid>
-            <Grid item>
-              <TextField id="id" label="Id" variant="outlined" />
+            <Grid item container spacing={2}>
+              <Grid item>
+                <Typography variant="h6" gutterTop>Gadgets Information</Typography>
+                <DeviceCombo />
+                <TextField id="deviceName" label="Device Name" variant="outlined" />
+                <TextField id="deviceBrand" label="Device Brand" variant="outlined" />
+                <TextField id="deviceSerialNumber" label="Device Serial Number" variant="outlined" />
+                <Button variant="outlined">Add Device</Button>
+              </Grid>
             </Grid>
-            <Grid item>
-              <GenderCombo />
-            </Grid>
-            <Grid item>
-              <RoleCombo />
+            <Grid item container spacing={2}>
+              <Button variant="contained" color="primary" fullWidth>Submit</Button>
+              <img src={gadgetsHero} alt="Laptop and Tablet" /> 
             </Grid>
           </Grid>
         </form>
