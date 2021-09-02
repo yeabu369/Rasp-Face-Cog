@@ -2,15 +2,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles((theme) => ({
   root: {
-    paddingTop: theme.spacing(6),
+    
   },
-  report: {
-    marginLeft: theme.spacing(6)
-  },
-  visitorInfoText: {
-    display: 'flex',
-    alignItems: 'center'
-  },
+  form: {},
   toolbar: theme.mixins.toolbar,
   primaryText: {
     color: theme.palette.primary.main
