@@ -3,7 +3,7 @@ import { Button, Typography, Container, TextField, Grid } from "@material-ui/cor
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import useStyles from "./styles";
-import gadgetsHero from "../../assets/Gadgets.svg"
+import gadgetsHero from "../../assets/Gadgets.svg";
 
 const GenderCombo = () => (
   <Autocomplete
@@ -21,7 +21,6 @@ const RoleCombo = () => (
     id="role-combo"
     options={roles}
     getOptionLabel={(option) => option.type}
-    style={{ width: 300 }}
     renderInput={(params) => (
       <TextField {...params} label="Role" variant="outlined" />
     )}
@@ -33,7 +32,6 @@ const DeviceCombo = () => (
     id="device-combo"
     options={devices}
     getOptionLabel={(option) => option.type}
-    style={{ width: 300 }}
     renderInput={(params) => (
       <TextField {...params} label="Device Type" variant="outlined" />
     )}
