@@ -8,7 +8,9 @@ import {
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
+import UploadImage from "../Upload/UploadImage";
 import useStyles from "./styles";
+
 import gadgetsHero from "../../assets/Gadgets.svg";
 
 const GenderCombo = () => (
@@ -105,6 +107,9 @@ const Home = () => {
               </Grid>
               <Grid item xs={12}>
                 <RoleCombo />
+              </Grid>
+              <Grid item xs={12}>
+                <UploadImage />
               </Grid>
             </Grid>
 
