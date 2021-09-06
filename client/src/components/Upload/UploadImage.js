@@ -3,13 +3,18 @@ import React, { useState } from "react";
 import { CardContent, Grid, Fab, Typography } from "@material-ui/core";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 
+import useStyles from "./styles";
+
 const UploadImage = () => {
   const [mainState, setMainState] = useState("initial");
   const [imageUploaded, setImageUploaded] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
 
+  const classes = useStyles();
+
   const handleUploadClick = (event) => {
     var file = event.target.files[0];
+    console.log(file);
     const reader = new FileReader();
     var url = reader.readAsDataURL(file);
 
@@ -33,6 +38,7 @@ const UploadImage = () => {
           <input
             accept="image/*"
             id="contained-button-file"
+            className={classes.input}
             multiple
             type="file"
             onChange={handleUploadClick}
